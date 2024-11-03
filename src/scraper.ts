@@ -9,6 +9,11 @@ const crawler = new PuppeteerCrawler({
     requestHandler: router,
     // Comment this option to scrape the full website.
     maxRequestsPerCrawl: 2,
+    launchContext: {
+        launchOptions: {
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        }
+    }
 });
 
 export default crawler;
