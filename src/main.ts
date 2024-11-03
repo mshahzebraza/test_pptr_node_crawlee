@@ -17,6 +17,7 @@ app.get("/scrape", async (_req: Request, res: Response) => {
 });
 
 app.get("/", (_req: Request, res: Response) => {
+    console.log("Hello");
     res.send("Express + TypeScript Server");
 });
 
