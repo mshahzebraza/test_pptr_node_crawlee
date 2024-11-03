@@ -1,15 +1,16 @@
-// For more information, see https://crawlee.dev/
-import { PuppeteerCrawler, log } from 'crawlee';
+// src/index.ts
+import dotenv from "dotenv";
+import express, { Express, Request, Response } from "express";
 
-import { router } from './routes.js';
+dotenv.config();
 
-const startUrls = ['https://crawlee.dev'];
+const app: Express = express();
+const port = process.env.PORT || 3000;
 
-const crawler = new PuppeteerCrawler({
-    // proxyConfiguration: new ProxyConfiguration({ proxyUrls: ['...'] }),
-    requestHandler: router,
-    // Comment this option to scrape the full website.
-    maxRequestsPerCrawl: 10,
+app.get("/", (_req: Request, res: Response) => {
+    res.send("Express + TypeScript Server");
 });
 
-await crawler.run(startUrls);
+app.listen(port, () => {
+    console.log(`[server]: Server is running at http://localhost:${port}`);
+});
